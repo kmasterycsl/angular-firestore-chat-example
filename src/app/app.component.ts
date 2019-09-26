@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { User } from 'firebase';
+import { User, firestore } from 'firebase';
 import { UserService } from './user.service';
 import { IMessage } from 'src/entities/MessageEntity';
 import { MessageService } from './message.service';
@@ -24,7 +24,7 @@ export class AppComponent {
   onSubmit() {
     const newMessage: IMessage = {
       content: this.messageFormControl.value,
-      date: new Date(),
+      date: firestore.Timestamp.now(),
       uid: this.user.uid
     };
 
