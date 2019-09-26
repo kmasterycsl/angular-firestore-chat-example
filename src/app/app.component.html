@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class="title">Angular + Firestore Demo</h2>
+  <input class="input" placeholder="Your message..." [formControl]="messageFormControl" (keyup.enter)="onSubmit()" />
+  <div>
+    <div *ngFor="let message of messages | async" [ngClass]="classFor(message)">
+      <div class="message">
+        <div class="date">
+          {{message.date.toDate() | date: "medium" }}
+        </div>
+        <div class="content">
+          {{message.content}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
